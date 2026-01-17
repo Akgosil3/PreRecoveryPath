@@ -8,25 +8,29 @@ const CrisisSupport: React.FC<CrisisSupportProps> = () => {
       name: "SAMHSA National Helpline",
       number: "1-800-662-4357",
       description: "Free, confidential, 24/7 treatment referral and information service",
-      availability: "24/7"
+      availability: "24/7",
+      isCallable: true
     },
     {
       name: "National Suicide Prevention Lifeline",
       number: "988",
       description: "Free and confidential support for people in distress",
-      availability: "24/7"
+      availability: "24/7",
+      isCallable: true
     },
     {
       name: "Crisis Text Line",
       number: "Text HOME to 741741",
       description: "Free, 24/7 support for those in crisis via text message",
-      availability: "24/7"
+      availability: "24/7",
+      isCallable: false
     },
     {
       name: "NIDA Drug Abuse Hotline",
       number: "1-800-662-4357",
       description: "Information about substance abuse and treatment options",
-      availability: "24/7"
+      availability: "24/7",
+      isCallable: true
     }
   ];
 
@@ -84,11 +88,17 @@ const CrisisSupport: React.FC<CrisisSupportProps> = () => {
             <p style={{ color: '#666', marginBottom: '10px' }}>{hotline.description}</p>
             <span className="badge">{hotline.availability}</span>
             <div style={{ marginTop: '15px' }}>
-              <a href={`tel:${hotline.number.replace(/[^0-9]/g, '')}`}>
+              {hotline.isCallable ? (
+                <a href={`tel:${hotline.number.replace(/[^0-9]/g, '')}`}>
+                  <button className="button" style={{ width: '100%' }}>
+                    Call Now
+                  </button>
+                </a>
+              ) : (
                 <button className="button" style={{ width: '100%' }}>
-                  Call Now
+                  Text Now
                 </button>
-              </a>
+              )}
             </div>
           </div>
         ))}
