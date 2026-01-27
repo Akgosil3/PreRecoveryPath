@@ -6,8 +6,11 @@ import SupportNetwork from './components/SupportNetwork'
 import Resources from './components/Resources'
 import Goals from './components/Goals'
 import CrisisSupport from './components/CrisisSupport'
+import Journal from './components/Journal'
+import RelapsePrevention from './components/RelapsePrevention'
+import Meditation from './components/Meditation'
 
-type Tab = 'dashboard' | 'assessment' | 'support' | 'resources' | 'goals' | 'crisis'
+type Tab = 'dashboard' | 'assessment' | 'support' | 'resources' | 'goals' | 'crisis' | 'journal' | 'prevention' | 'meditation'
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard')
@@ -26,6 +29,12 @@ function App() {
         return <Goals />
       case 'crisis':
         return <CrisisSupport />
+      case 'journal':
+        return <Journal />
+      case 'prevention':
+        return <RelapsePrevention />
+      case 'meditation':
+        return <Meditation />
       default:
         return <Dashboard />
     }
@@ -73,6 +82,24 @@ function App() {
             onClick={() => setActiveTab('crisis')}
           >
             🚨 Crisis Support
+          </button>
+          <button 
+            className={`nav-tab ${activeTab === 'journal' ? 'active' : ''}`}
+            onClick={() => setActiveTab('journal')}
+          >
+            📝 Journal
+          </button>
+          <button 
+            className={`nav-tab ${activeTab === 'prevention' ? 'active' : ''}`}
+            onClick={() => setActiveTab('prevention')}
+          >
+            🛡️ Prevention Plan
+          </button>
+          <button 
+            className={`nav-tab ${activeTab === 'meditation' ? 'active' : ''}`}
+            onClick={() => setActiveTab('meditation')}
+          >
+            🧘 Meditation
           </button>
         </nav>
       </header>
