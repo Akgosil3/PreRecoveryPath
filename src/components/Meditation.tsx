@@ -21,9 +21,14 @@ const Meditation: React.FC<MeditationProps> = () => {
 
   // Load sessions from localStorage
   useEffect(() => {
-    const savedSessions = localStorage.getItem('meditationSessions');
-    if (savedSessions) {
-      setSessions(JSON.parse(savedSessions));
+    try {
+      const savedSessions = localStorage.getItem('meditationSessions');
+      if (savedSessions) {
+        setSessions(JSON.parse(savedSessions));
+      }
+    } catch (error) {
+      console.error('Failed to load meditation sessions:', error);
+      localStorage.removeItem('meditationSessions');
     }
   }, []);
 
@@ -49,12 +54,6 @@ const Meditation: React.FC<MeditationProps> = () => {
     let interval: ReturnType<typeof setInterval> | null = null;
     
     if (isRunning && !isPaused && selectedExercise === 'breathing') {
-      const phaseDurations = {
-        inhale: 4000,
-        hold: 4000,
-        exhale: 4000
-      };
-
       interval = setInterval(() => {
         setBreathPhase((current) => {
           if (current === 'inhale') return 'hold';
@@ -62,13 +61,13 @@ const Meditation: React.FC<MeditationProps> = () => {
           setBreathCount((prev) => prev + 1);
           return 'inhale';
         });
-      }, phaseDurations[breathPhase]);
+      }, 4000); // Fixed 4-second intervals for each phase
     }
 
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isRunning, isPaused, breathPhase, selectedExercise]);
+  }, [isRunning, isPaused, selectedExercise]);
 
   const handleStart = (exercise: string) => {
     setSelectedExercise(exercise);

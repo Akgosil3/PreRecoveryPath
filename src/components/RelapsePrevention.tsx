@@ -24,10 +24,16 @@ const RelapsePrevention: React.FC<RelapsePreventionProps> = () => {
 
   // Load data from localStorage
   useEffect(() => {
-    const savedTriggers = localStorage.getItem('relapseTriggers');
-    const savedStrategies = localStorage.getItem('copingStrategies');
-    if (savedTriggers) setTriggers(JSON.parse(savedTriggers));
-    if (savedStrategies) setCopingStrategies(JSON.parse(savedStrategies));
+    try {
+      const savedTriggers = localStorage.getItem('relapseTriggers');
+      const savedStrategies = localStorage.getItem('copingStrategies');
+      if (savedTriggers) setTriggers(JSON.parse(savedTriggers));
+      if (savedStrategies) setCopingStrategies(JSON.parse(savedStrategies));
+    } catch (error) {
+      console.error('Failed to load relapse prevention data:', error);
+      localStorage.removeItem('relapseTriggers');
+      localStorage.removeItem('copingStrategies');
+    }
   }, []);
 
   // Save triggers

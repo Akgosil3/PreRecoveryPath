@@ -1,8 +1,10 @@
 # Recovery 360 - Complete Recovery Ecosystem
 
-A comprehensive web application designed to support individuals in their substance use recovery journey through assessment, support networks, resources, goal tracking, and crisis support.
+A comprehensive web application designed to support individuals in their substance use recovery journey through assessment, support networks, resources, goal tracking, crisis support, journaling, relapse prevention, and meditation.
 
 ![Recovery 360 Dashboard](https://github.com/user-attachments/assets/fc05b157-36db-4d44-94e4-1029251a755d)
+
+![Enhanced Navigation](https://github.com/user-attachments/assets/56e82fb6-5f8d-443d-85cd-21a5b9bca9f3)
 
 ## Features
 
@@ -43,6 +45,37 @@ A comprehensive web application designed to support individuals in their substan
 - Emergency coping strategies
 - Grounding techniques and immediate interventions
 - Warning signs to watch for
+
+### 📝 Journal (NEW)
+- Write daily journal entries with mood tracking
+- Track your thoughts, feelings, challenges, and victories
+- Edit and delete entries as needed
+- All entries stored locally for privacy
+- Helpful journaling tips and guidance
+
+![Journal Module](https://github.com/user-attachments/assets/440d572a-9e2e-47f6-abee-61bbb10c1223)
+
+### 🛡️ Relapse Prevention Plan (NEW)
+- Identify personal triggers by category (people, places, emotions, situations)
+- Create specific coping strategies for each trigger
+- Review early warning signs for relapse risk
+- Emergency action plan for high-risk situations
+- All prevention data stored locally
+
+![Relapse Prevention Plan](https://github.com/user-attachments/assets/09a90ddb-6e21-4b6c-ae1d-12a00fbb9f70)
+
+### 🧘 Meditation & Mindfulness (NEW)
+- Five guided meditation exercises:
+  - Box Breathing (4-4-4 breathing pattern with visual animation)
+  - Body Scan Meditation
+  - Mindfulness Meditation
+  - Gratitude Meditation
+  - Loving-Kindness Meditation
+- Customizable timer (3, 5, 10, 15, or 20 minutes)
+- Track meditation sessions and total practice time
+- Visual breathing animation for guided breathing exercises
+
+![Meditation Module](https://github.com/user-attachments/assets/4625c4b4-279f-4a10-928c-08b4263541c6)
 
 ## Technology Stack
 
@@ -97,19 +130,22 @@ npm run preview
 PreRecoveryPath/
 ├── src/
 │   ├── components/
-│   │   ├── Dashboard.tsx       # Main dashboard with metrics
-│   │   ├── Assessment.tsx      # Interactive assessment module
-│   │   ├── SupportNetwork.tsx  # Support contacts management
-│   │   ├── Resources.tsx       # Educational resources
-│   │   ├── Goals.tsx          # Goal and milestone tracking
-│   │   └── CrisisSupport.tsx  # Crisis intervention resources
-│   ├── App.tsx                # Main application component
-│   ├── App.css                # Application styles
-│   └── main.tsx               # Application entry point
-├── index.html                 # HTML template
-├── package.json              # Dependencies and scripts
-├── tsconfig.json             # TypeScript configuration
-├── vite.config.ts            # Vite configuration
+│   │   ├── Dashboard.tsx          # Main dashboard with metrics
+│   │   ├── Assessment.tsx         # Interactive assessment module
+│   │   ├── SupportNetwork.tsx     # Support contacts management
+│   │   ├── Resources.tsx          # Educational resources
+│   │   ├── Goals.tsx              # Goal and milestone tracking
+│   │   ├── CrisisSupport.tsx      # Crisis intervention resources
+│   │   ├── Journal.tsx            # Journal entries with mood tracking
+│   │   ├── RelapsePrevention.tsx  # Relapse prevention planning
+│   │   └── Meditation.tsx         # Meditation exercises with timer
+│   ├── App.tsx                    # Main application component
+│   ├── App.css                    # Application styles
+│   └── main.tsx                   # Application entry point
+├── index.html                     # HTML template
+├── package.json                   # Dependencies and scripts
+├── tsconfig.json                  # TypeScript configuration
+├── vite.config.ts                 # Vite configuration
 └── README.md                 # This file
 ```
 

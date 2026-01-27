@@ -18,9 +18,14 @@ const Journal: React.FC<JournalProps> = () => {
 
   // Load entries from localStorage on mount
   useEffect(() => {
-    const savedEntries = localStorage.getItem('journalEntries');
-    if (savedEntries) {
-      setEntries(JSON.parse(savedEntries));
+    try {
+      const savedEntries = localStorage.getItem('journalEntries');
+      if (savedEntries) {
+        setEntries(JSON.parse(savedEntries));
+      }
+    } catch (error) {
+      console.error('Failed to load journal entries:', error);
+      localStorage.removeItem('journalEntries');
     }
   }, []);
 
