@@ -1,5 +1,6 @@
 import { useState, lazy, Suspense } from 'react'
 import './App.css'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // Lazy load components for better performance
 const Dashboard = lazy(() => import('./components/Dashboard'))
@@ -144,9 +145,11 @@ function App() {
       </header>
 
       <main id="main-content" role="main">
-        <Suspense fallback={<LoadingSpinner />}>
-          {renderContent()}
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            {renderContent()}
+          </Suspense>
+        </ErrorBoundary>
       </main>
 
       <footer style={{ 
